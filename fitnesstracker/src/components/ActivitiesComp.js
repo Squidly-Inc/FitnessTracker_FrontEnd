@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import {fetchActivities} from '../api/activitiesRequest'
+import { Link } from 'react-router-dom';
+import {fetchActivities, postActivity} from '../api/activitiesRequest';
 
 const AllActivities = () => {
     const [ activities, setActivities ] = useState([]);
@@ -9,26 +10,27 @@ const AllActivities = () => {
         setActivities(allActivities);
     }, []);
 
-    // TEMP FUNCTION
-    function consoleLogActivities(){
-        if (activities.length == 0){
-            //pass
-        }
-        else(console.log(activities))
-    }
+    let activityElements = null;
+    if(activities.length !== 0){
+        activityElements = <div>{activities.map((activity) => {
+            return (
+                <div id='activity' key={activity.id}>
+                    <div id='activityTitle'>{activity.id} 
+                    --- {activity.name}
+                    --- {activity.description}</div>
+                </div>
+            )
+        })}</div>
+    };
 
     return(
-        <>
-            {/* TEMP FUNCTION >> */ } {consoleLogActivities()}
+        <>            
+            <Link to='/createActivity'><button>Create New Activity</button></Link>
 
-            <div>This is the activities component</div>
-            
-            <button onClick={() => {
-                console.log(activities)
-            }}>Fetch Activities</button>
+            {activityElements}
         </>
         
     );
-}
+};
 
 export default AllActivities;

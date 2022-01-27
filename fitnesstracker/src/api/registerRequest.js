@@ -20,11 +20,10 @@ export const registerRequest = async (username, password) => {
 
     // Set Token
     if (response.error) {
-        console.log(response.message)
+        return false;
       } 
       else if (response) { 
         localStorage.setItem("token", response.token);
+        return true;
     };
-
-    return response;
 }

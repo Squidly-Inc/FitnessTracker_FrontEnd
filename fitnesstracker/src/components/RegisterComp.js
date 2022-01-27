@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { registerRequest } from '../api/registerRequest'
+import { registerRequest } from '../api/registerRequest';
 
 function RegisterComp() {
 
@@ -8,8 +8,23 @@ function RegisterComp() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+
         registerRequest(username, password)
-    }
+        .then(function(response){
+            if(response){
+                console.log("Success!", response);
+                setUsername('');
+                setPassword('');
+            }
+            else {
+                console.log("Failure!", response);
+                setUsername('');
+                setPassword('');
+                window.alert(`Error! Please enter a different username :D`);
+            }
+            
+        });
+    };
     
     return (
         <form onSubmit={handleSubmit}>
@@ -32,6 +47,6 @@ function RegisterComp() {
             <button type="submit">Register </button>
         </form>
     );
-}
+};
 
 export default RegisterComp;
