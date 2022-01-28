@@ -19,12 +19,10 @@ export const loginRequest = async (username, password) => {
 
     // Set Token
     if (response.error) {
-        console.log(response.message)
-      } 
-
-      else if (response) { 
-        localStorage.setItem("token", response.token)
+        return false
+    }
+    else if (response) { 
+        localStorage.setItem("token", response.token);
+        return true
     };
-
-    return response;
 }

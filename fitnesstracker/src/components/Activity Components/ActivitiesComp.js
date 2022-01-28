@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
-import {fetchActivities, postActivity} from '../api/activitiesRequest';
+import {fetchActivities} from '../../api/activitiesRequest';
 
 const AllActivities = () => {
     const [ activities, setActivities ] = useState([]);
@@ -12,24 +12,19 @@ const AllActivities = () => {
 
     let activityElements = null;
     if(activities.length !== 0){
-        activityElements = <div>{activities.map((activity) => {
+        activityElements = <div id="allActivitesDiv">{activities.map((activity) => {
             return (
                 <div id='activity' key={activity.id}>
-                    <div id='activityTitle'>{activity.id} 
-                    --- {activity.name}
-                    --- {activity.description}</div>
+                    <div id='activityTitle'>{activity.name}</div>
+                    <div id='description'>{activity.description}</div>
+                    <button id='editBtn'><Link to={'/editActivity'} state={activity} id='edit'>Edit</Link></button>
                 </div>
             )
         })}</div>
     };
 
     return(
-        <>            
-            <Link to='/createActivity'><button>Create New Activity</button></Link>
-
-            {activityElements}
-        </>
-        
+        <>{activityElements}</>
     );
 };
 

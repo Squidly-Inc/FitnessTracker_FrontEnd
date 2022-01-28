@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { registerRequest } from '../api/registerRequest';
+import { registerRequest } from '../../api/registerRequest';
 
 function RegisterComp() {
 
@@ -12,15 +12,13 @@ function RegisterComp() {
         registerRequest(username, password)
         .then(function(response){
             if(response){
-                console.log("Success!", response);
                 setUsername('');
                 setPassword('');
             }
             else {
-                console.log("Failure!", response);
                 setUsername('');
                 setPassword('');
-                window.alert(`Error! Please enter a different username :D`);
+                window.alert(`Error! Username already exists. Please enter a different username :D`);
             }
             
         });
@@ -40,7 +38,7 @@ function RegisterComp() {
                 type="text"
                 className="password"
                 value={password}
-                placeholder="Enter Username"
+                placeholder="Enter Password"
                 onChange={(event) => setPassword(event.target.value)}>
             </input>
 

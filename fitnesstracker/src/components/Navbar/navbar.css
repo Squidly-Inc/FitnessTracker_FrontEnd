@@ -1,0 +1,38 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    background-color: darkgrey;
+    padding: 20px 5px;
+    margin-bottom: 20px;
+}
+
+#navLinks {
+    display: flex;
+    width: 20vw;
+    margin-left: 20px;
+}
+
+#navLinks > a {
+    margin-right: 50px;
+}
+
+nav > div > a {
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    font-weight: 900;
+}
+
+nav > div > a:hover {
+    color: #3799e6;
+}
+
+#loginItems {
+    align-self: flex-end;
+    margin-right: 20px;
+}
+
+#loginItems > a {
+    margin-left: 20px;
+}
+

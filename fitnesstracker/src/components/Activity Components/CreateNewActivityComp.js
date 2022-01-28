@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
-import { postActivity } from '../api/activitiesRequest';
+import { postActivity } from '../../api/activitiesRequest';
 import { useNavigate } from 'react-router-dom';
+
 
 function CreateNewActivityComp() {
     
@@ -11,9 +12,20 @@ function CreateNewActivityComp() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        postActivity(name, description);
-        navigate('/activities');
-        window.location.reload();
+
+        let token = localStorage.getItem("token");
+        
+
+        if (token){
+            await postActivity(name, description);
+            navigate('/activities');
+            window.location.reload();
+        }
+        else {
+            window.alert(`Error! Please enter a different username :D`)
+        }
+
+     
     };
 
     

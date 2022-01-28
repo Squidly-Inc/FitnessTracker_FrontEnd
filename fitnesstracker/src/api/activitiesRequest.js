@@ -12,24 +12,40 @@ export const fetchActivities = async () => {
 export const postActivity = async (name, description) => {
 
     let token = localStorage.getItem("token");
+
+    const request = await fetch(`${BASE_URL}/activities`, {
+        method: "POST",
+        headers: {
+            "Content-Type" : "application/json",
+            "Authorization" : `Bearer ${token}`
+        },
+        body: JSON.stringify({
+            name : name,
+            description : description
+        })
+    });
+
+    const response = await request.json();
+    return response;
+};
+
+
+export const updateActivity = async (id, name, description) => {
+
+    let token = localStorage.getItem("token");
     
-    if (token){
+    const request = await fetch(`${BASE_URL}/activities/${id}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type" : "application/json",
+            "Authorization" : `Bearer ${token}`
+        },
+        body: JSON.stringify({
+            name : name,
+            description : description
+        })
+    });
 
-        const request = await fetch(`${BASE_URL}/activities`, {
-            method: "POST",
-            headers: {
-                "Content-Type" : "application/json",
-                "Authorization" : `Bearer ${token}`
-            },
-            body: JSON.stringify({
-                name : name,
-                description : description
-            })
-        });
-
-        const response = await request.json();
-        console.log(response)
-        return response
-    }
-    else {console.log(false); return false}
+    const response = await request.json();
+    return response;
 };

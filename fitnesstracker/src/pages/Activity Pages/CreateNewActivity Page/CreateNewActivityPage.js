@@ -1,5 +1,5 @@
 import React from 'react';
-import CreateNewActivityComp from '../components/CreateNewActivityComp'
+import CreateNewActivityComp from '../../../components/Activity Components/CreateNewActivityComp'
 
 function CreateNewActivityPage() {
     return (
