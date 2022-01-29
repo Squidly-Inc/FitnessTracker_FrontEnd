@@ -1,0 +1,53 @@
+#routine {
+    display: flex;
+    border: solid black;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+#routineData {
+    width: 20vw;
+}
+
+#routine > div {
+    padding-bottom: 10px;
+}
+
+#routineTitle {
+    font-weight: 900;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+#goal {
+    margin-bottom: 10px;
+}
+
+#activityDetails {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 50px;
+}
+
+#theWordActivities{
+    margin-right: 10px;
+    font-weight: 900;
+    height: 100%;
+    font-size: 20px;
+}
+
+#data {
+    margin-right: 70px;
+    margin-bottom: 30px;
+}
+
+.activityData {
+    display: flex;
+}
+
+.activityDescriber {
+    margin-right: 10px;
+    width: 170px;
+    text-align: right;
+    font-weight: 900;
+}
